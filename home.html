@@ -1,57 +1,227 @@
 <!DOCTYPE html>
-<html lang="du">
+<html lang="nl"> <!-- Changed from 'du' to 'nl' for Dutch -->
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- ----------main style------------ -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="style.css">
-        <!-- ------------Google Fonts-------------- -->
-        <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet">
-        <!-- --------------Icon pack font-awesome----------- -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!-- --------------------Google Maps Api---------------- -->
-        <script defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCl7F3URup7S4Of3R3cJQLk535vNnUQRzg&callback=initMap">
-        </script>
-        <title>ElectroHub | World's Best Market</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
 
-    <body>
-        <div class="header">
-            <div class="container">
-                <div class="navbar">
-                    <div class="logo">
-                        <img src="logo.png" style="height:75px; width: 75px; " alt="logo-imaget">
-                    </div>
-                    <nav>
-                        <ul id="menu-items">
-                            <li><a href="">Home</a></li>
-                            <li><a href="#home">Products</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                            <li><a href="register.html">Account</a></li>
-                        </ul>
-                    </nav>
-                   <!-- <img src="images/cart.png" alt="cart" width="30px" height="30px" class="cart-img">-->
-                    <img src="images/menu.png" alt="menu" width="30px" height="30px" class="menu-icon" onclick="menutoggle()">
-                </div>
-                <div class="row">
-                    <div class="col-md-6 ">
-                        <h1 class="text-white">Big Saving deals happening <br> Right Now !</h1>
-                        <p>Enjoy a safe, convenient shopping experience</p>
-                        <p>Shop stress-free from home.</p>
-                        <a href="" class="btn btn-main">Explore Now &#8594;</a>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="https://i.pinimg.com/736x/cf/02/f2/cf02f29d056e10cf45d00c752f739891.jpg" alt="banner-image" class="center">
-                    </div>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-                </div>
-            </div>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Maps API -->
+    <script defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_SECURE_API_KEY&callback=initMap"></script>
+
+    <title>ElectroHub | World's Best Market</title>
+
+    <style>
+        /* ======= General Styles ======= */
+        body {
+            font-family: 'Recursive', sans-serif;
+            background: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar .logo img {
+            height: 60px;
+        }
+
+        .navbar nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+        }
+
+        .navbar nav ul li {
+            margin: 0 15px;
+        }
+
+        .navbar nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .navbar nav ul li a:hover {
+            color: #ff6f61;
+        }
+
+        /* Mobile Menu */
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            width: 35px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .navbar nav ul {
+                display: none;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.9);
+                position: absolute;
+                width: 100%;
+                left: 0;
+                top: 60px;
+                text-align: center;
+            }
+
+            .navbar nav ul.show {
+                display: flex;
+            }
+
+            .navbar nav ul li {
+                padding: 15px 0;
+            }
+        }
+
+        /* Hero Section */
+        .header {
+            background: linear-gradient(to right, #010810, #0b0218);
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-weight: 700;
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .btn-main {
+            background: #ff6f61;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: 0.3s;
+            display: inline-block;
+            margin-top: 15px;
+        }
+
+        .btn-main:hover {
+            background: #e44d3a;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section Grid */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            text-align: center;
+            padding: 50px 15px;
+        }
+
+        .hero img {
+            max-width: 90%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 30px;
+            }
+
+            .hero img {
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .btn-main {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+
+        /* Footer */
+        .footer {
+            background: #222;
+            color: rgb(237, 232, 232);
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.png" alt="logo">
         </div>
+        <nav>
+            <ul id="menu-items">
+                <li><a href="">Home</a></li>
+                <li><a href="#home">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="register.html">Account</a></li>
+            </ul>
+        </nav>
+        <img src="" alt="menu" class="menu-icon" onclick="menuToggle()">
+    </div>
+
+    <!-- Hero Section -->
+    <div class="header">
+        <h1>Big Saving Deals Happening Right Now!</h1>
+        <p>Enjoy a safe, convenient shopping experience</p>
+        <p>Shop stress-free from home.</p>
+        <a href="" class="btn-main">Explore Now &#8594;</a>
+    </div>
+
+    
+<script>
+        function menuToggle() {
+            let menu = document.getElementById("menu-items");
+            menu.classList.toggle("show");
+        }
+    </script>
+</body>
+
+
+
      <!-- Home -->
      <div class="small-container mt-5">
             <h2 class="title" id="home">Home</h2>
@@ -288,127 +458,6 @@
                 <div class="col-4 box-container">
                     <a class="image Step" href="product/F-index8.html"> <img src="https://i.pinimg.com/736x/b7/47/19/b7471997f9817de5691be5e4a07236b1.jpg" alt="Topwear">
                     </a><h5 class="product_name">Men Fashion</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p class="price_name" ><b>From ₹1999.99</b></p>
-                </div>
-            </div>
-              <!-- Electronics -->
-        <div class="small-container mt-5">
-            <h2 class="title">Electronics</h2>
-            <div class="row horizontal-scroll-wrapper squares">
-                <div class="col-4 box-container">
-                 <!-- <div class="image-overlay"></div>
-                --> <a class="image Step" href="product/E-index1.html"><img src="https://i.pinimg.com/736x/6b/89/7d/6b897d8d3960808f4bbcd690cc584d19.jpg" alt="Laptops">
-                  </a>  <h5 class="product_name">Laptops</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title"></h3>
-                        <h4 class="content-price"></h4>
-                     <!--   <div class="content-btn btn btn-secondary" title="Add to Cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></div>
-                    --></div>
-                    <p class="price_name" ><b>From ₹45000.99</b></p>
-                    <!-- <div class="btn btn-secondary" title="Preview Item"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    </div> -->
-                </div>
-                <div class="col-4 box-container">
-                    <a class="image Step" href="product/E-index2.html"> <img src="https://i.pinimg.com/736x/56/a5/34/56a534a00afc280bc6a9487a9a44e48b.jpg" alt="Healthcare">
-                    </a><h5 class="product_name">Healthcare</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p class="price_name" ><b>From ₹38000</b></p>
-                </div>
-                <div class="col-4 box-container">
-                    <a class="image Step" href="product/E-index3.html"> <img src="https://i.pinimg.com/736x/69/70/d7/6970d75d6580e815643e2c48f29c8dca.jpg" alt="Gaming Laptops">
-                    </a><h5 class="product_name">Gaming Laptops</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p class="price_name" ><b>From ₹14999.99</b></p>
-                </div>
-                <div class="col-4 box-container">
-                    <a class="image Step" href="product/E-index4.html"> <img src="https://i.pinimg.com/736x/74/a5/d6/74a5d67d611f49acbc83f8ab5eb9c4d0.jpg" alt="Camera">
-                    </a> <h5 class="product_name">Camera</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p class="price_name" ><b>From ₹21999.99</b></p>
-                </div>
-            </div>
-            <div class="row horizontal-scroll-wrapper squares">
-                <div class="col-4 box-container" >
-                    <!--<div class="image-overlay"></div>-->
-                    <a class="image Step" href="product/E-index5.html"><img src="https://i.pinimg.com/736x/98/c5/60/98c560a3379e8c9fc1b83a838aabf130.jpg" alt="Monitors"></a>
-                    <h5 class="product_name" >Monitors</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <div class="content-details fadeIn-bottom">
-                        <h3 class="content-title"></h3>
-                        <h4 class="content-price"></h4>
-                       <!-- <div class="content-btn btn btn-secondary" title="Add to Cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></div>
-                    --> </div>
-                    <p class="price_name"  ><b>From ₹500</b></p>
-                    <!-- <div class="btn btn-secondary" title="Preview Item"><i class="fa fa-cart-plus" aria-hidden="true"></i>
-                    </div> -->
-                </div>
-                <div class="col-4 box-container">
-                   <a class="image Step" href="product/E-index6.html"> <img src="https://i.pinimg.com/736x/fe/a5/8e/fea58eae62f5a6422b6946a557054584.jpg" alt="Printer"></a>
-                    <h5 class="product_name">Printer</h5>
-                     <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-o"></i>
-                        <i class="fa fa-star-o"></i>
-                    </div>
-                    <p class="price_name" ><b>From ₹2000</b></p>
-                   
-    
-                </div>
-                <div class="col-4 box-container">
-                    <a class="image Step" href="product/E-index7.html">  <img src="https://i.pinimg.com/736x/c3/ab/7a/c3ab7af8acf717b596babae4b84893fc.jpg" alt="Tablets">
-                    </a> <h5 class="product_name">Tablets</h5>
-                    <div class="rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                    </div>
-                    <p class="price_name" ><b>From ₹499.99</b></p>
-                </div>
-                <div class="col-4 box-container">
-                    <a class="image Step" href="product/E-index8.html"> <img src="https://i.pinimg.com/736x/db/77/b2/db77b23e94ec732f97f9abd11d4afd21.jpg" alt="Computer Gadgets">
-                    </a><h5 class="product_name">Computer Gadgets</h5>
                     <div class="rating">
                         <i class="fa fa-star"></i>
                         <i class="fa fa-star"></i>
@@ -665,7 +714,127 @@
             </div>
             
 
-
+  <!-- Electronics -->
+        <div class="small-container mt-5">
+            <h2 class="title">Electronics</h2>
+            <div class="row horizontal-scroll-wrapper squares">
+                <div class="col-4 box-container">
+                 <!-- <div class="image-overlay"></div>
+                --> <a class="image Step" href="product/E-index1.html"><img src="https://i.pinimg.com/736x/6b/89/7d/6b897d8d3960808f4bbcd690cc584d19.jpg" alt="Laptops">
+                  </a>  <h5 class="product_name">Laptops</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="content-details fadeIn-bottom">
+                        <h3 class="content-title"></h3>
+                        <h4 class="content-price"></h4>
+                     <!--   <div class="content-btn btn btn-secondary" title="Add to Cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></div>
+                    --></div>
+                    <p class="price_name" ><b>From ₹45000.99</b></p>
+                    <!-- <div class="btn btn-secondary" title="Preview Item"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    </div> -->
+                </div>
+                <div class="col-4 box-container">
+                    <a class="image Step" href="product/E-index2.html"> <img src="https://i.pinimg.com/736x/56/a5/34/56a534a00afc280bc6a9487a9a44e48b.jpg" alt="Healthcare">
+                    </a><h5 class="product_name">Healthcare</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="price_name" ><b>From ₹38000</b></p>
+                </div>
+                <div class="col-4 box-container">
+                    <a class="image Step" href="product/E-index3.html"> <img src="https://i.pinimg.com/736x/69/70/d7/6970d75d6580e815643e2c48f29c8dca.jpg" alt="Gaming Laptops">
+                    </a><h5 class="product_name">Gaming Laptops</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="price_name" ><b>From ₹14999.99</b></p>
+                </div>
+                <div class="col-4 box-container">
+                    <a class="image Step" href="product/E-index4.html"> <img src="https://i.pinimg.com/736x/74/a5/d6/74a5d67d611f49acbc83f8ab5eb9c4d0.jpg" alt="Camera">
+                    </a> <h5 class="product_name">Camera</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="price_name" ><b>From ₹21999.99</b></p>
+                </div>
+            </div>
+            <div class="row horizontal-scroll-wrapper squares">
+                <div class="col-4 box-container" >
+                    <!--<div class="image-overlay"></div>-->
+                    <a class="image Step" href="product/E-index5.html"><img src="https://i.pinimg.com/736x/98/c5/60/98c560a3379e8c9fc1b83a838aabf130.jpg" alt="Monitors"></a>
+                    <h5 class="product_name" >Monitors</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="content-details fadeIn-bottom">
+                        <h3 class="content-title"></h3>
+                        <h4 class="content-price"></h4>
+                       <!-- <div class="content-btn btn btn-secondary" title="Add to Cart"><i class="fa fa-cart-plus" aria-hidden="true"></i></div>
+                    --> </div>
+                    <p class="price_name"  ><b>From ₹500</b></p>
+                    <!-- <div class="btn btn-secondary" title="Preview Item"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    </div> -->
+                </div>
+                <div class="col-4 box-container">
+                   <a class="image Step" href="product/E-index6.html"> <img src="https://i.pinimg.com/736x/fe/a5/8e/fea58eae62f5a6422b6946a557054584.jpg" alt="Printer"></a>
+                    <h5 class="product_name">Printer</h5>
+                     <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="price_name" ><b>From ₹2000</b></p>
+                   
+    
+                </div>
+                <div class="col-4 box-container">
+                    <a class="image Step" href="product/E-index7.html">  <img src="https://i.pinimg.com/736x/c3/ab/7a/c3ab7af8acf717b596babae4b84893fc.jpg" alt="Tablets">
+                    </a> <h5 class="product_name">Tablets</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                    <p class="price_name" ><b>From ₹499.99</b></p>
+                </div>
+                <div class="col-4 box-container">
+                    <a class="image Step" href="product/E-index8.html"> <img src="https://i.pinimg.com/736x/db/77/b2/db77b23e94ec732f97f9abd11d4afd21.jpg" alt="Computer Gadgets">
+                    </a><h5 class="product_name">Computer Gadgets</h5>
+                    <div class="rating">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-o"></i>
+                    </div>
+                    <p class="price_name" ><b>From ₹1999.99</b></p>
+                </div>
+            </div>
 
             <!-- Latest products -->
             
